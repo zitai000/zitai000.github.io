@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="请进小黑屋">
 <meta property="og:description" content="第一章并发、进程、线程的基本概念 p{ text-indent:2em;}">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/09/02/多线程并发学习过程/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG">
+<meta property="og:image" content="https://github.com/zitai000/zitai000.github.io/blob/master/2019/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/21/1699ecde3ba97f25?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2019-09-02T11:04:43.351Z">
+<meta property="og:updated_time" content="2019-09-02T14:27:29.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程并发学习过程">
 <meta name="twitter:description" content="第一章并发、进程、线程的基本概念 p{ text-indent:2em;}">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/02/多线程并发学习过程/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG">
+<meta name="twitter:image" content="https://github.com/zitai000/zitai000.github.io/blob/master/2019/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG">
   
     <link rel="alternative" href="/atom.xml" title="请进小黑屋" type="application/atom+xml">
   
@@ -210,7 +210,7 @@ p{ text-indent:2em;}
 <ul>
 <li>多线程： 一个程序运行后被抽象为一个进程，但是线程是从一个进程里面分割出来的，由于CPU处理进程的时候是采用时间片轮转的方式，所以要把一个大个进程给分割成多个线程，效率更高。一个线程占有独立堆栈空间（1M），线程之间的切换也需要保存很多中间状态，耗费很多本该属于程序运行的时间。所以线程不是越多越好。</li>
 </ul>
-<p><img src="/2019/09/02/多线程并发学习过程/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG" alt="多线程工作示意"></p>
+<p><img src="https://github.com/zitai000/zitai000.github.io/blob/master/2019/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG" alt></p>
 <h4 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h4><p> 进程和线程的主要差别在于它们是不同的操作系统资源管理方式。进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</p>
 <p>1) 简而言之,一个程序至少有一个进程,一个进程至少有一个线程.线程不能独立运行，它依赖于进程，进程不依赖线程</p>
 <p>2) 线程的划分尺度小于进程，使得多线程程序的并发性高。</p>
