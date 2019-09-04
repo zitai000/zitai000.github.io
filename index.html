@@ -179,17 +179,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第四章，多线程函数"><a href="#第四章，多线程函数" class="headerlink" title="第四章，多线程函数"></a>第四章，多线程函数</h1><h2 id="std-lock-函数模板"><a href="#std-lock-函数模板" class="headerlink" title="std::lock()函数模板"></a>std::lock()函数模板</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* std::lock(my.mutex1,my_mutex2);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">todo</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">  my.mutex1.unlock();</span><br><span class="line">  my.mutex2.unlock();</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>用来处理多个互斥量死锁问题。</li>
-<li>能力：一次能锁住两个或者两个以上的互斥量，<strong>它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险</strong></li>
-<li>如果互斥量中有一个没有锁住，它就处于等待状态，等待所有互斥量全部锁住，才能继续往下运行（返回）。不断尝试，锁住其它互斥量，如果其它互斥量无法被锁住，就会立即把已经锁住的互斥量解锁。</li>
-</ul>
-<h2 id="std-lock-guard-和std-adopt-lock"><a href="#std-lock-guard-和std-adopt-lock" class="headerlink" title="std::lock_guard()和std::adopt_lock()"></a>std::lock_guard()和std::adopt_lock()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* std::lock(my.mutex1,my_mutex2);</span><br><span class="line">std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex1,std::adopt_lock);</span><br><span class="line">std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex2,std::adopt_lock);</span><br></pre></td></tr></table></figure>
-
-<p>之后就不用手动依次unlock（）；</p>
-
+        <h1 id="第四章，多线程函数"><a href="#第四章，多线程函数" class="headerlink" title="第四章，多线程函数"></a>第四章，多线程函数</h1>
+        
+          <a class="article-more-a" href="/2019/09/04/多线程学习4/#more">more >></a>
+        
       
 
       
@@ -853,15 +846,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">static</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程，锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">static</a>
               </li>
              
               <li class="article-tag-list-item">

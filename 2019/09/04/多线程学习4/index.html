@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>多线程学习4 | 请进小黑屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第四章，多线程函数std::lock()函数模板12345678* std::lock(my.mutex1,my_mutex2);/*todo*/  my.mutex1.unlock();  my.mutex2.unlock();   用来处理多个互斥量死锁问题。 能力：一次能锁住两个或者两个以上的互斥量，它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险 如果互斥量中有一个没有锁住，">
+  <meta name="description" content="第四章，多线程函数">
 <meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程学习4">
 <meta property="og:url" content="http://yoursite.com/2019/09/04/多线程学习4/index.html">
 <meta property="og:site_name" content="请进小黑屋">
-<meta property="og:description" content="第四章，多线程函数std::lock()函数模板12345678* std::lock(my.mutex1,my_mutex2);/*todo*/  my.mutex1.unlock();  my.mutex2.unlock();   用来处理多个互斥量死锁问题。 能力：一次能锁住两个或者两个以上的互斥量，它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险 如果互斥量中有一个没有锁住，">
+<meta property="og:description" content="第四章，多线程函数">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-04T02:58:02.486Z">
+<meta property="og:updated_time" content="2019-09-04T07:45:55.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程学习4">
-<meta name="twitter:description" content="第四章，多线程函数std::lock()函数模板12345678* std::lock(my.mutex1,my_mutex2);/*todo*/  my.mutex1.unlock();  my.mutex2.unlock();   用来处理多个互斥量死锁问题。 能力：一次能锁住两个或者两个以上的互斥量，它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险 如果互斥量中有一个没有锁住，">
+<meta name="twitter:description" content="第四章，多线程函数">
   
     <link rel="alternative" href="/atom.xml" title="请进小黑屋" type="application/atom+xml">
   
@@ -179,7 +179,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第四章，多线程函数"><a href="#第四章，多线程函数" class="headerlink" title="第四章，多线程函数"></a>第四章，多线程函数</h1><h2 id="std-lock-函数模板"><a href="#std-lock-函数模板" class="headerlink" title="std::lock()函数模板"></a>std::lock()函数模板</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* std::lock(my.mutex1,my_mutex2);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">todo</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">  my.mutex1.unlock();</span><br><span class="line">  my.mutex2.unlock();</span><br></pre></td></tr></table></figure>
+        <h1 id="第四章，多线程函数"><a href="#第四章，多线程函数" class="headerlink" title="第四章，多线程函数"></a>第四章，多线程函数</h1><a id="more"></a>
+<h2 id="std-lock-函数模板"><a href="#std-lock-函数模板" class="headerlink" title="std::lock()函数模板"></a>std::lock()函数模板</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* std::lock(my.mutex1,my_mutex2);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">todo</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">  my.mutex1.unlock();</span><br><span class="line">  my.mutex2.unlock();</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>用来处理多个互斥量死锁问题。</li>
@@ -188,7 +189,30 @@
 </ul>
 <h2 id="std-lock-guard-和std-adopt-lock"><a href="#std-lock-guard-和std-adopt-lock" class="headerlink" title="std::lock_guard()和std::adopt_lock()"></a>std::lock_guard()和std::adopt_lock()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* std::lock(my.mutex1,my_mutex2);</span><br><span class="line">std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex1,std::adopt_lock);</span><br><span class="line">std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex2,std::adopt_lock);</span><br></pre></td></tr></table></figure>
 
-<p>之后就不用手动依次unlock（）；</p>
+<ul>
+<li>std::adopt_lock()表示这个互斥量已经被lock了，就不用在std::lock_guard()中的构造函数lock了<br>之后就不用手动依次unlock（）；</li>
+</ul>
+<h2 id="std-unique-lock类模板"><a href="#std-unique-lock类模板" class="headerlink" title="std::unique_lock类模板"></a>std::unique_lock类模板</h2><h3 id="std-try-to-lock"><a href="#std-try-to-lock" class="headerlink" title="std::try_to_lock"></a>std::try_to_lock</h3><h3 id="std-defer-lock"><a href="#std-defer-lock" class="headerlink" title="std::defer_lock"></a>std::defer_lock</h3><h3 id="成员函数：lock-和unlock-和try-lock-和release"><a href="#成员函数：lock-和unlock-和try-lock-和release" class="headerlink" title="成员函数：lock()和unlock()和try_lock()和release()"></a>成员函数：lock()和unlock()和try_lock()和release()</h3><ul>
+<li><p>工作中lock_guard用的比较多(推荐使用)</p>
+</li>
+<li><p>unique_lock()用法和lock_lock差不多，更灵活，效率差一点，内存消耗多一点，可以完全取代后者。</p>
+</li>
+<li><p>try_to_lock()我们会尝试用mutex的lock锁定这个mutex，但如果没有锁定成功，我们也会立即返回，并不会阻塞在那等待；<strong>而这样的用法不能在前面私自调用lock加锁</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">std::unique&lt;std::mutex&gt;sbguard(my_mutex1,std::try_to_lock);</span><br><span class="line">if(sbguard.owns_lock)</span><br><span class="line">&#123;</span><br><span class="line">  //拿到了锁</span><br><span class="line">  todo...</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">   //没拿到锁,做其他事情（不包含共享数据）</span><br><span class="line">   todo...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>std::defer_lock使用的前提是不能自己调用lock；<br>用法：并没有给mutex加锁，初始化了一个没有加锁的mutex。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::unique&lt;std::mutex&gt;sbguard(my_mutex1,std::defer_lock);</span><br><span class="line">sbguard.lock();</span><br><span class="line">//不用解锁,会自动解锁，</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>虽然unique_lock里能自动解锁，但还是有一个成员函数unlock()，使用更灵活。</p>
+</li>
+<li><p>try_lock ()尝试加锁，假如拿到了锁，就返回true，否则返回flase</p>
+</li>
+<li><p>release() 返回它所管理的mutex对象指针，并释放所有权，也就是说，这个unique_lock和muytex不再有关系<br>如果原来mutex处于加锁状态需要自己解锁<br>&amp;ptx==&amp;my_mutex1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">td::unique&lt;std::mutex&gt;sbguard(my_mutex1);</span><br><span class="line">mutex *ptx=svguard.release();</span><br><span class="line">ptx-&gt;unlock();//自己负责解锁</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
 
@@ -421,15 +445,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">static</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程，锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">static</a>
               </li>
              
               <li class="article-tag-list-item">
