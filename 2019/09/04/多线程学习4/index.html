@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="请进小黑屋">
 <meta property="og:description" content="第四章，多线程函数">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-04T07:45:55.879Z">
+<meta property="og:updated_time" content="2019-09-04T08:25:27.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程学习4">
 <meta name="twitter:description" content="第四章，多线程函数">
@@ -211,7 +211,16 @@
 <li><p>try_lock ()尝试加锁，假如拿到了锁，就返回true，否则返回flase</p>
 </li>
 <li><p>release() 返回它所管理的mutex对象指针，并释放所有权，也就是说，这个unique_lock和muytex不再有关系<br>如果原来mutex处于加锁状态需要自己解锁<br>&amp;ptx==&amp;my_mutex1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">td::unique&lt;std::mutex&gt;sbguard(my_mutex1);</span><br><span class="line">mutex *ptx=svguard.release();</span><br><span class="line">ptx-&gt;unlock();//自己负责解锁</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">td::unique&lt;std::mutex&gt;sbguard(my_mutex1);</span><br><span class="line">mutex *ptx=svguard.release();</span><br><span class="line">ptx-&gt;unlock();//自己负责解锁</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>std::move 移动语义<br>相当于把sbguard2和my_mutex1绑定到一起<br>sbguard1指向空</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">td::unique&lt;std::mutex&gt;sbguard1(my_mutex1);</span><br><span class="line">td::unique&lt;std::mutex&gt;sbguard2(std::move(sbguard1));</span><br></pre></td></tr></table></figure>
+
+<p>##锁概念</p>
+<ul>
+<li>一般把锁住的代码多少称为锁的粒度，<br>代码少，粒度就叫细，反之，则叫粗。</li>
 </ul>
 
       
@@ -445,15 +454,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">static</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">多线程，锁</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">static</a>
               </li>
              
               <li class="article-tag-list-item">
