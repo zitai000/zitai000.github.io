@@ -9,14 +9,14 @@
   <title>线程详解三 | 请进小黑屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="第三章创建和等待多个线程">
-<meta name="keywords" content="多线程">
+<meta name="keywords" content="多线程，锁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线程详解三">
 <meta property="og:url" content="http://yoursite.com/2019/09/02/线程详解三/index.html">
 <meta property="og:site_name" content="请进小黑屋">
 <meta property="og:description" content="第三章创建和等待多个线程">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-04T01:54:00.826Z">
+<meta property="og:updated_time" content="2019-09-04T02:35:29.962Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程详解三">
 <meta name="twitter:description" content="第三章创建和等待多个线程">
@@ -215,17 +215,20 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line">#include&quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;list&gt;</span><br><span class="line">#include&lt;mutex&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class test &#123;</span><br><span class="line">public:</span><br><span class="line">	//线程入口,搜集命令</span><br><span class="line">	void Intest()</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">		for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; &quot;插入一个元素&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">			my_mutex.lock();</span><br><span class="line">			orderpools.push_back(i);</span><br><span class="line">			my_mutex.unlock();</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	//把数据取出的线程</span><br><span class="line">	void Outtest()</span><br><span class="line">	&#123;</span><br><span class="line">		for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex);//sbguard为随便取的对象名</span><br><span class="line"></span><br><span class="line">			//my_mutex.lock();</span><br><span class="line">			if (orderpools.empty())</span><br><span class="line">			&#123;</span><br><span class="line">				cout &lt;&lt; &quot;命令池为空&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				int command = orderpools.front();</span><br><span class="line">				orderpools.pop_front();</span><br><span class="line">				cout &lt;&lt; &quot;取出命令&quot; &lt;&lt; command &lt;&lt; endl;</span><br><span class="line">			&#125;</span><br><span class="line">			//my_mutex.unlock();</span><br><span class="line">		&#125;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	list&lt;int&gt;orderpools;//用于存储命令集合</span><br><span class="line">	mutex my_mutex;//创建了一个互斥量</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	test mytobj;</span><br><span class="line">	thread myoutmytobj(&amp;test::Outtest, &amp;mytobj);//第二个参数是引用, 才能保证线程里用的是同一对象</span><br><span class="line">	thread Inmytobj(&amp;test::Intest, &amp;mytobj);</span><br><span class="line">	myoutmytobj.join();</span><br><span class="line">	Inmytobj.join();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">#include&quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;list&gt;</span><br><span class="line">#include&lt;mutex&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class test &#123;</span><br><span class="line">public:</span><br><span class="line">	//线程入口,搜集命令</span><br><span class="line">	void Intest()</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">		for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; &quot;插入一个元素&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">			my_mutex.lock();</span><br><span class="line">			orderpools.push_back(i);</span><br><span class="line">			my_mutex.unlock();</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	//把数据取出的线程</span><br><span class="line">	void Outtest()</span><br><span class="line">	&#123;</span><br><span class="line">		for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex);//sbguard为随便取的对象名</span><br><span class="line"></span><br><span class="line">			//my_mutex.lock();</span><br><span class="line">			if (orderpools.empty())</span><br><span class="line">			&#123;</span><br><span class="line">				cout &lt;&lt; &quot;命令池为空&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">			&#125;</span><br><span class="line">			else</span><br><span class="line">			&#123;</span><br><span class="line">				int command = orderpools.front();</span><br><span class="line">				orderpools.pop_front();</span><br><span class="line">				cout &lt;&lt; &quot;取出命令&quot; &lt;&lt; command &lt;&lt; endl;</span><br><span class="line">			&#125;</span><br><span class="line">			//my_mutex.unlock();</span><br><span class="line">		&#125;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	list&lt;int&gt;orderpools;//用于存储命令集合</span><br><span class="line">	mutex my_mutex;//创建了一个互斥量</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	test mytobj;</span><br><span class="line">	thread myoutmytobj(&amp;test::Outtest, &amp;mytobj);//第二个参数是引用, 才能保证线程里用的是同一对象</span><br><span class="line">	thread Inmytobj(&amp;test::Intest, &amp;mytobj);</span><br><span class="line">	myoutmytobj.join();</span><br><span class="line">	Inmytobj.join();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">运行结果：</span><br><span class="line">插入一个元素0</span><br><span class="line">插入一个元素1</span><br><span class="line">取出命令0</span><br><span class="line">命令池为空2</span><br><span class="line">命令池为空3</span><br><span class="line">命令池为空4</span><br><span class="line">命令池为空5</span><br><span class="line">命令池为空6</span><br><span class="line">命令池为空7</span><br><span class="line">命令池为空8</span><br><span class="line">命令池为空9</span><br><span class="line">命令池为空10</span><br><span class="line">命令池为空11</span><br><span class="line">插入一个元素2</span><br><span class="line">取出命令1</span><br><span class="line">命令池为空13</span><br><span class="line">命令池为空14</span><br><span class="line">插入一个元素3</span><br><span class="line">取出命令2</span><br><span class="line">命令池为空16</span><br><span class="line">命令池为空17</span><br><span class="line">插入一个元素4</span><br><span class="line">取出命令3</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
 
-<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>所谓死锁，是指多个进程在运行过程中因争夺资源而造成的一种僵局，当进程处于这种僵持状态时，若无外力作用，它们都将无法再向前推进。 因此我们举个例子来描述，如果此时有一个线程A，按照先锁a再获得锁b的的顺序获得锁，而在此同时又有另外一个线程B，按照先锁b再锁a的顺序获得锁</p>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><ul>
+<li>写的好的博客：<br><a href="https://blog.csdn.net/hd12370/article/details/82814348" target="_blank" rel="noopener">https://blog.csdn.net/hd12370/article/details/82814348</a></li>
+</ul>
+<p>所谓死锁，是指多个进程在运行过程中因争夺资源而造成的一种僵局，当进程处于这种僵持状态时，若无外力作用，它们都将无法再向前推进。 因此我们举个例子来描述，如果此时有一个线程A，按照先锁a再获得锁b的的顺序获得锁，而在此同时又有另外一个线程B，按照先锁b再锁a的顺序获得锁</p>
 <ul>
 <li>必要条件</li>
 </ul>
-<p>如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
-<ol>
-<li>互斥：（<strong>至少有两个互斥量</strong>）至少有一个资源必须处于非共享模式，即一次只有一个进程可使用。如果另一进程申请该资源，那么申请进程应等到该资源释放为止。</li>
-<li>占有并等待：—个进程应占有至少一个资源，并等待另一个资源，而该资源为其他进程所占有。</li>
-<li>非抢占：资源不能被抢占，即资源只能被进程在完成任务后自愿释放。</li>
-<li>循环等待：有一组等待进程 {P0，P1，…，Pn}，P0 等待的资源为 P1 占有，P1 等待的资源为 P2 占有，……，Pn-1 等待的资源为 Pn 占有，Pn 等待的资源为 P0 占有。</li>
-</ol>
+<p>*如果在一个系统中以下四个条件同时成立，那么就能引起死锁：</p>
+<ul>
+<li>互斥条件：（<strong>至少有两个互斥量</strong>）进程要求对所分配的资源进行排它性控制，即在一段时间内某资源仅为一进程所占用。</li>
+<li>请求和保持条件：当进程因请求资源而阻塞时，对已获得的资源保持不放。</li>
+<li>不剥夺条件：进程已获得的资源在未使用完之前，不能剥夺，只能在使用完时由自己释放。</li>
+<li>环路等待条件：在发生死锁时，必然存在一个进程–资源的环形链。</li>
+</ul>
 <p>我们强调所有四个条件必须同时成立才会出现死锁。循环等待条件意味着占有并等待条件，这样四个条件并不完全独立。</p>
 <h4 id="解决死锁的基本方法："><a href="#解决死锁的基本方法：" class="headerlink" title="解决死锁的基本方法："></a>解决死锁的基本方法：</h4><ol>
 <li>预防死锁：</li>
@@ -233,7 +236,7 @@
 <ul>
 <li>资源一次性分配：一次性分配所有资源，这样就不会再有请求了：（破坏请求条件）<br>只要有一个资源得不到分配，也不给这个进程分配其他的资源：（破坏请保持条件）</li>
 <li>可剥夺资源：即当某进程获得了部分资源，但得不到其它资源，则释放已占有的资源（破坏不可剥夺条件）</li>
-<li>资源有序分配法：系统给每类资源赋予一个编号，每一个进程按编号递增的顺序请求资源，释放则相反（破坏环路等待条件）</li>
+<li>资源有序分配法：系统给每类资源赋予一个编号，每一个进程按编号递增的顺序请求资源，释放则相反，保证两个或者多个互斥量上锁的顺序一致。（破坏环路等待条件）</li>
 </ul>
 
       
@@ -269,7 +272,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">多线程，锁</a>
         		</li>
       		
 		</ul>
@@ -338,6 +341,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/09/04/多线程学习4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          多线程学习4
+        
+      </div>
+    </a>
   
   
     <a href="/2019/09/02/多线程编程2/" id="article-nav-older" class="article-nav-link-wrap">
@@ -467,11 +479,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">static</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">static</a>
+                <a href="javascript:void(0)" class="js-tag color1">多线程，锁</a>
               </li>
              
               <li class="article-tag-list-item">

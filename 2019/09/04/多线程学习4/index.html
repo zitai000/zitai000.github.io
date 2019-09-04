@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>多线程并发学习过程 | 请进小黑屋</title>
+  <title>多线程学习4 | 请进小黑屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一章并发、进程、线程的基本概念 p{ text-indent:2em;}">
+  <meta name="description" content="第四章，多线程函数std::lock()函数模板12345678* std::lock(my.mutex1,my_mutex2);/*todo*/  my.mutex1.unlock();  my.mutex2.unlock();   用来处理多个互斥量死锁问题。 能力：一次能锁住两个或者两个以上的互斥量，它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险 如果互斥量中有一个没有锁住，">
 <meta name="keywords" content="多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多线程并发学习过程">
-<meta property="og:url" content="http://yoursite.com/2019/09/02/多线程并发学习过程/index.html">
+<meta property="og:title" content="多线程学习4">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/多线程学习4/index.html">
 <meta property="og:site_name" content="请进小黑屋">
-<meta property="og:description" content="第一章并发、进程、线程的基本概念 p{ text-indent:2em;}">
+<meta property="og:description" content="第四章，多线程函数std::lock()函数模板12345678* std::lock(my.mutex1,my_mutex2);/*todo*/  my.mutex1.unlock();  my.mutex2.unlock();   用来处理多个互斥量死锁问题。 能力：一次能锁住两个或者两个以上的互斥量，它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险 如果互斥量中有一个没有锁住，">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://github.com/zitai000/zitai000.github.io/blob/master/2019/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/21/1699ecde3ba97f25?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2019-09-02T14:30:19.594Z">
+<meta property="og:updated_time" content="2019-09-04T02:58:02.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多线程并发学习过程">
-<meta name="twitter:description" content="第一章并发、进程、线程的基本概念 p{ text-indent:2em;}">
-<meta name="twitter:image" content="https://github.com/zitai000/zitai000.github.io/blob/master/2019/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG">
+<meta name="twitter:title" content="多线程学习4">
+<meta name="twitter:description" content="第四章，多线程函数std::lock()函数模板12345678* std::lock(my.mutex1,my_mutex2);/*todo*/  my.mutex1.unlock();  my.mutex2.unlock();   用来处理多个互斥量死锁问题。 能力：一次能锁住两个或者两个以上的互斥量，它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险 如果互斥量中有一个没有锁住，">
   
     <link rel="alternative" href="/atom.xml" title="请进小黑屋" type="application/atom+xml">
   
@@ -162,77 +159,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-多线程并发学习过程" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-多线程学习4" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      多线程并发学习过程
+      多线程学习4
     </h1>
   
 
         
-        <a href="/2019/09/02/多线程并发学习过程/" class="archive-article-date">
-  	<time datetime="2019-09-02T07:45:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
+        <a href="/2019/09/04/多线程学习4/" class="archive-article-date">
+  	<time datetime="2019-09-04T02:35:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="并发、进程、线程的基本概念"><a href="#并发、进程、线程的基本概念" class="headerlink" title="并发、进程、线程的基本概念"></a>并发、进程、线程的基本概念</h3><style type="text/css">
-p{ text-indent:2em;}
-</style>
-<p>
-<a id="more"></a>
+        <h1 id="第四章，多线程函数"><a href="#第四章，多线程函数" class="headerlink" title="第四章，多线程函数"></a>第四章，多线程函数</h1><h2 id="std-lock-函数模板"><a href="#std-lock-函数模板" class="headerlink" title="std::lock()函数模板"></a>std::lock()函数模板</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* std::lock(my.mutex1,my_mutex2);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">todo</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">  my.mutex1.unlock();</span><br><span class="line">  my.mutex2.unlock();</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>并发：两个或者更多的任务（独立的活动）同时进行；一个程序同时执行多个独立的任务，同一时刻只能有一条指令（或一个进程、一个线程）运行，以往计算机，单核cpu某一时刻只能执行一个任务，由才操作系统调度，每秒进行多个任务转换，轮换执行速度超乎想象，在宏观上看，就有多条指令同时执行的效果。（并发的假象）</li>
+<li>用来处理多个互斥量死锁问题。</li>
+<li>能力：一次能锁住两个或者两个以上的互斥量，<strong>它不存在因为在多个线程中，多个互斥量顺序不一致而导致的死锁风险</strong></li>
+<li>如果互斥量中有一个没有锁住，它就处于等待状态，等待所有互斥量全部锁住，才能继续往下运行（返回）。不断尝试，锁住其它互斥量，如果其它互斥量无法被锁住，就会立即把已经锁住的互斥量解锁。</li>
 </ul>
-</p><p>上下文切换是需要时间开销：比如操作系统要保持计算机的各种状态、执行星系等，都需要时间，一会切换的回来的时候复原这些信息。</p>
-<p>硬件发展，出现了多处理器计算机：用于服务器和高性能计算领域；</p>
-<p>台式机：在一块芯片上有多核cpu：双核、四核、八核、等等<br>这个时候就能实现真正的并行执行多个任务（硬件并发）</p>
-<p>使用并发的原因：同时干多个任务，提高性能</p>
-<ul>
-<li>并行，就像我们平时的理解，是同一时刻有多条指令在多个处理机上同时执行。如果一台计算机有多个CPU，情况就不同了，如果进程数小于CPU数，则不同的进程可以分配给不同的CPU来运行，这样，多个进程就是真正同时运行的，这便是并行。但如果进程数大于CPU数，则仍然需要使用并发技术。</li>
-</ul>
-<ul>
-<li><p>可执行程序：磁盘上的一个文件，windows下的一个扩展名为.exe的、linux上ls和rwxrwxrwx（x执行权限）；</p>
-</li>
-<li><p>进程：执行可执行程序后，就叫创建了一个进程。它是个动态的概念。 是系统进行资源分配与调度的基本单位 。通过TCP/IP的端口来实现进程间交互的，或者通过管道，文件，消息队列，共享内存通信。</p>
-</li>
-<li><p>线程：是操作系统能够进行运算调度的最小单位，每一个进程都有一个主线程，这个主线程是唯一的，也就是一个进程中只能有一个主线程，和进程同在，唇齿相依。主线程来执行main函数内的代码。其它线程和主线程执行的任务是不一样的。（并发）</p>
-</li>
-</ul>
-<p>线程是一个更加接近于执行体的概念，它可以与同进程中的其他线程共享数据（数据一致性问题），但拥有自己的栈空间，拥有独立的执行序列。储存在TLS内存区域，它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。</p>
-<ul>
-<li>多线程： 一个程序运行后被抽象为一个进程，但是线程是从一个进程里面分割出来的，由于CPU处理进程的时候是采用时间片轮转的方式，所以要把一个大个进程给分割成多个线程，效率更高。一个线程占有独立堆栈空间（1M），线程之间的切换也需要保存很多中间状态，耗费很多本该属于程序运行的时间。所以线程不是越多越好。</li>
-</ul>
-<p><img src="https://github.com/zitai000/zitai000.github.io/blob/master/2019/09/02/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91%E5%AD%A6%E4%B9%A0%E8%BF%87%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B.PNG" alt="图片"></p>
-<h4 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h4><p> 进程和线程的主要差别在于它们是不同的操作系统资源管理方式。进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。</p>
-<p>1) 简而言之,一个程序至少有一个进程,一个进程至少有一个线程.线程不能独立运行，它依赖于进程，进程不依赖线程</p>
-<p>2) 线程的划分尺度小于进程，使得多线程程序的并发性高。</p>
-<p>3) 另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。</p>
-<p>4) 线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。</p>
-<p>5) 从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别</p>
-<h4 id="C-11新标准线程库"><a href="#C-11新标准线程库" class="headerlink" title="C++11新标准线程库"></a>C++11新标准线程库</h4><ul>
-<li><p>以往的：windows：CreateThread（），beginthreadexe（）<br>Linux： pthread_Create()<br>不能跨平台<br>thread（pthread）；跨平台，但需要做配置</p>
-</li>
-<li><p>新标准：跨平台，意味着可可移植性,</p>
-</li>
-</ul>
-<h4 id="线程存储区域"><a href="#线程存储区域" class="headerlink" title="线程存储区域"></a>线程存储区域</h4><p><img src="https://user-gold-cdn.xitu.io/2019/3/21/1699ecde3ba97f25?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p>2.2.1 栈:<br>我们通常都是说调用堆栈，其实这里的堆是没有含义的，调用堆栈就是调用栈的意思。<br>那么我们的栈里面有什么呢？<br>我们从主线程的入口main函数，会不断的进行函数调用，<br>每次调用的时候，会把所有的参数和返回地址压入到栈中。</p>
-<p>2.2.2 PC：<br>Program Counter 程序计数器，操作系统真正运行的是一个个的线程，<br>而我们的进程只是它的一个容器。PC就是指向当前的指令，而这个指令是放在内存中。<br>每个线程都有一串自己的指针，去指向自己当前所在内存的指针。<br>计算机绝大部分是存储程序性的，说的就是我们的数据和程序是存储在同一片内存里的<br>这个内存中既有我们的数据变量又有我们的程序。所以我们的PC指针就是指向我们的内存的。</p>
-<p>2.2.2.1 缓冲区溢出<br>例如我们经常听到一个漏洞：缓冲区溢出<br>这是什么意思呢？<br>例如：我们有个地方要输入用户名，本来是用来存数据的地方。<br>然后黑客把数据输入的特别长。这个长度超出了我们给数据存储的内存区，这时候跑到了<br>我们给程序分配的一部分内存中。黑客就可以通过这种办法将他所要运行的代码<br>写入到用户名框中，来植入进来。我们的解决方法就是，用用户名的长度来限制不要超过<br>用户名的缓冲区的大小来解决。</p>
-<p>2.3 TLS:<br>全称：thread local storage<br>之前我们看到每个进程都有自己独立的内存，这时候我们想，我们的线程有没有一块独立的内存呢?答案是有的，就是TLS。<br>可以用来存储我们线程所独有的数据。<br>可以看到：线程才是我们操作系统所真正去运行的，而进程呢，则是像容器一样他把需要的一些东西放在了一起，而把不需要的东西做了一层隔离，进行隔离开来。</p>
- <p>
+<h2 id="std-lock-guard-和std-adopt-lock"><a href="#std-lock-guard-和std-adopt-lock" class="headerlink" title="std::lock_guard()和std::adopt_lock()"></a>std::lock_guard()和std::adopt_lock()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* std::lock(my.mutex1,my_mutex2);</span><br><span class="line">std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex1,std::adopt_lock);</span><br><span class="line">std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex2,std::adopt_lock);</span><br></pre></td></tr></table></figure>
 
+<p>之后就不用手动依次unlock（）；</p>
 
-
-</p>
       
 
       
@@ -322,7 +279,7 @@ p{ text-indent:2em;}
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/02/多线程并发学习过程/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/04/多线程学习4/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -336,18 +293,9 @@ p{ text-indent:2em;}
   
 <nav id="article-nav">
   
-    <a href="/2019/09/02/多线程编程2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          多线程编程2
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/09/02/Static的详细使用总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Static的详细使用总结</div>
+    <a href="/2019/09/02/线程详解三/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线程详解三</div>
       <i class="icon-circle-right"></i>
     </a>
   
