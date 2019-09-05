@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>请进小黑屋</title>
+  <title>设计模式 | 请进小黑屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="保持求知">
-<meta property="og:type" content="website">
-<meta property="og:title" content="请进小黑屋">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="第五章 单例设计模式">
+<meta name="keywords" content="单例模式，多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/设计模式/index.html">
 <meta property="og:site_name" content="请进小黑屋">
-<meta property="og:description" content="保持求知">
+<meta property="og:description" content="第五章 单例设计模式">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-05T08:51:42.795Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="请进小黑屋">
-<meta name="twitter:description" content="保持求知">
+<meta name="twitter:title" content="设计模式">
+<meta name="twitter:description" content="第五章 单例设计模式">
   
     <link rel="alternative" href="/atom.xml" title="请进小黑屋" type="application/atom+xml">
   
@@ -157,16 +159,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-设计模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/设计模式/">设计模式</a>
+    <h1 class="article-title" itemprop="name">
+      设计模式
     </h1>
   
 
@@ -179,12 +179,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第五章-单例设计模式"><a href="#第五章-单例设计模式" class="headerlink" title="第五章 单例设计模式"></a>第五章 单例设计模式</h1>
-        
-          <a class="article-more-a" href="/2019/09/04/设计模式/#more">more >></a>
-        
+        <h1 id="第五章-单例设计模式"><a href="#第五章-单例设计模式" class="headerlink" title="第五章 单例设计模式"></a>第五章 单例设计模式</h1><a id="more"></a>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<li>概谈： 代码的特殊写法，程序灵活，维护起来可能方便，其他人接管和阅读代码的时候可能会非常痛苦，代码晦涩难懂，（head first）。为了应付大型开发经验、模块划分经验，总结整理成设计模式。传入中国后，就有点本末倒置了，一个小小的项目都硬套设计模式。有独特的优点。<h3 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h3></li>
+<li>定义：整个项目中，有某个或者某些特殊的类，属于该类的对象，只能创建一个，创建不下多个对象。<strong>单例类</strong></li>
+<li>用于：配置文件的读写，</li>
+</ul>
+<h4 id="单例类-常用-："><a href="#单例类-常用-：" class="headerlink" title="单例类(常用)："></a>单例类(常用)：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">#include&quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;list&gt;</span><br><span class="line">#include&lt;mutex&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">class MyCAS //这是一个单例类</span><br><span class="line">&#123; </span><br><span class="line">	</span><br><span class="line">private:</span><br><span class="line">	MyCAS() &#123;&#125;;//私有化构造函数，就不能普通的生成类的对象</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	static MyCAS *m_instance;//定义一个MYCAS的静态成员变量，是个指针，指向的是MyCas</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">	static MyCAS *GetInstance()</span><br><span class="line">	&#123;</span><br><span class="line">		if (m_instance == NULL)//如果此对象为空，则创建（new）一个对象</span><br><span class="line">		&#123;</span><br><span class="line">			m_instance = new MyCAS();</span><br><span class="line">			static CGtarbush cl; //程序退出的时候会自动调用此对象的析构函数</span><br><span class="line">		&#125;</span><br><span class="line">		return m_instance;</span><br><span class="line">	&#125;</span><br><span class="line">	class CGtarbush //类中套类，手动释放刚刚new的单例对象（强迫症患者 ）</span><br><span class="line">	&#123;</span><br><span class="line">	public:</span><br><span class="line">		~CGtarbush()</span><br><span class="line">		&#123;</span><br><span class="line">			if (MyCAS::m_instance)</span><br><span class="line">			&#123;</span><br><span class="line">				delete MyCAS::m_instance;</span><br><span class="line">				MyCAS::m_instance == NULL;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	void func()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;测试&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//类静态变量的初始化</span><br><span class="line">MyCAS *MyCAS::m_instance = NULL;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	MyCAS *ptr = MyCAS::GetInstance();//创建一个对象指针,返回MyCas的对象指针</span><br><span class="line">	MyCAS *ptr2 = MyCAS::GetInstance();</span><br><span class="line">	ptr-&gt;func();</span><br><span class="line">	ptr2-&gt;func();</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">运行结果：</span><br><span class="line"></span><br><span class="line">测试</span><br><span class="line">测试</span><br><span class="line"></span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<h4 id="单例设计模式共享数据问题"><a href="#单例设计模式共享数据问题" class="headerlink" title="单例设计模式共享数据问题"></a>单例设计模式共享数据问题</h4><ul>
+<li>问题：需要我们在自己创建的线程（非主线程）中来创建MYCAS这个单例类的对象,这种线程可能不止两个，就面临这GetIntance（）这个成员函数需要互斥。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include&quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;list&gt;</span><br><span class="line">#include&lt;mutex&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">mutex suo;//建立一个互斥量</span><br><span class="line"></span><br><span class="line">class MyCAS //这是一个单例类</span><br><span class="line">&#123; </span><br><span class="line">	</span><br><span class="line">private:</span><br><span class="line">	MyCAS() &#123;&#125;;//私有化构造函数，就不能普通的生成类的对象</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	static MyCAS *m_instance;//定义一个MYCAS的静态成员变量，是个指针，指向的是MyCas</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">	static MyCAS *GetInstance()</span><br><span class="line">	&#123;</span><br><span class="line">		if (m_instance == NULL) &#123; //双重锁定（检查）</span><br><span class="line"></span><br><span class="line">			unique_lock&lt;mutex&gt;myutex(suo);//自动加锁</span><br><span class="line">			if (m_instance == NULL)//如果此对象为空，则创建（new）一个对象</span><br><span class="line">			&#123;</span><br><span class="line">				m_instance = new MyCAS();</span><br><span class="line">				static CGtarbush cl; //程序退出的时候会自动调用此对象的析构函数</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return m_instance;</span><br><span class="line">	&#125;</span><br><span class="line">	class CGtarbush //类中套类，手动释放刚刚new的单例对象（强迫症患者 ）</span><br><span class="line">	&#123;</span><br><span class="line">	public:</span><br><span class="line">		~CGtarbush()</span><br><span class="line">		&#123;</span><br><span class="line">			if (MyCAS::m_instance)</span><br><span class="line">			&#123;</span><br><span class="line">				delete MyCAS::m_instance;</span><br><span class="line">				MyCAS::m_instance = NULL;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">	void func()</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; &quot;测试&quot; &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//类静态变量的初始化</span><br><span class="line">MyCAS *MyCAS::m_instance = NULL;</span><br><span class="line"></span><br><span class="line">void myprint(int num)</span><br><span class="line">&#123;</span><br><span class="line">	cout &lt;&lt; &quot;myprint被执行了 &quot;&lt;&lt; endl;</span><br><span class="line">		/*</span><br><span class="line">		todo</span><br><span class="line">		*/</span><br><span class="line">		MyCAS *ptr = MyCAS::GetInstance();</span><br><span class="line">	cout &lt;&lt; &quot;myprint结束了&quot;&lt;&lt; endl;</span><br><span class="line">	return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	thread mytobj1(myprint);</span><br><span class="line">	thread mytobj2(myprint);</span><br><span class="line">	mytobj1.join();</span><br><span class="line">	mytobj2.join();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="std-call-once"><a href="#std-call-once" class="headerlink" title="std::call_once();"></a>std::call_once();</h4><ul>
+<li>c++11引入的函数，该函数的第二个参数是一个函名a();</li>
+<li>功能是保证函数a（）只能被调用一次，即便有n+个线程同时调用该函数，但是会有一个线程获得此函数。</li>
+<li>具备互斥量的能力，而且效率上比互斥量消耗的资源更少</li>
+<li>需要和一个标记结合使用 std::once_flag是一个结构。通过这个标记来决定对应的函数a（）是否执行，调用成功后，once_flag这个标记被设置成一种已调用状态。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">once_flag g_flag;//系统定义的标记</span><br><span class="line">class MyCAS&#123;</span><br><span class="line">call_once(g_flag, 函数名);//两个线程同时执行到这里，其中一个线程成功调用，另外一个线程就需要等待调用完毕再来决定是否能调用此函数</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -204,16 +241,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/04/设计模式/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/04/设计模式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/04/多线程学习4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">多线程学习4</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -233,602 +329,14 @@
 
 
 
-
   
-    <article id="post-多线程学习4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/04/多线程学习4/">多线程学习4</a>
-    </h1>
   
 
-        
-        <a href="/2019/09/04/多线程学习4/" class="archive-article-date">
-  	<time datetime="2019-09-04T02:35:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第四章，多线程函数"><a href="#第四章，多线程函数" class="headerlink" title="第四章，多线程函数"></a>第四章，多线程函数</h1>
-        
-          <a class="article-more-a" href="/2019/09/04/多线程学习4/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/04/多线程学习4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-线程详解三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/线程详解三/">线程详解三</a>
-    </h1>
   
 
-        
-        <a href="/2019/09/02/线程详解三/" class="archive-article-date">
-  	<time datetime="2019-09-02T14:33:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h3 id="创建和等待多个线程"><a href="#创建和等待多个线程" class="headerlink" title="创建和等待多个线程"></a>创建和等待多个线程</h3>
-        
-          <a class="article-more-a" href="/2019/09/02/线程详解三/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">多线程，锁</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/线程详解三/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多线程编程2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/多线程编程2/">多线程编程2</a>
-    </h1>
   
 
-        
-        <a href="/2019/09/02/多线程编程2/" class="archive-article-date">
-  	<time datetime="2019-09-02T10:09:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h3 id="创建线程的方式一：用函数体创建"><a href="#创建线程的方式一：用函数体创建" class="headerlink" title="创建线程的方式一：用函数体创建"></a>创建线程的方式一：用函数体创建</h3><ul>
-<li><p>主线程从main（）开始执行，那么自己创建的线程也需要从一个函数开始运行（初始函数），这个函数运行完毕代表这个线程也结束</p>
-</li>
-<li><p>整个进程是否执行完毕标志是主线程执行完毕。</p></li></ul>
-        
-          <a class="article-more-a" href="/2019/09/02/多线程编程2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">创建多线程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/多线程编程2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多线程并发学习过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/多线程并发学习过程/">多线程并发学习过程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/02/多线程并发学习过程/" class="archive-article-date">
-  	<time datetime="2019-09-02T07:45:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="并发、进程、线程的基本概念"><a href="#并发、进程、线程的基本概念" class="headerlink" title="并发、进程、线程的基本概念"></a>并发、进程、线程的基本概念</h3><style type="text/css">
-p{ text-indent:2em;}
-</style>
-<p></p>
-        
-          <a class="article-more-a" href="/2019/09/02/多线程并发学习过程/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">多线程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/多线程并发学习过程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Static的详细使用总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/Static的详细使用总结/">Static的详细使用总结</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/02/Static的详细使用总结/" class="archive-article-date">
-  	<time datetime="2019-09-02T03:32:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于statci的用法"><a href="#关于statci的用法" class="headerlink" title="关于statci的用法"></a>关于statci的用法</h2><style type="text/css">
-p{ text-indent:2em;}
-</style>
-<p>
-知识点：static (静态存储)数据成员：编译时就被创建和初始化
-  实例只有一个（只有一个复制品），被所有该类对象共享，就像是住在同一个宿舍的成员，共享一个宿舍号码</p>
-        
-          <a class="article-more-a" href="/2019/09/02/Static的详细使用总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">static</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/Static的详细使用总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-图片测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/31/图片测试/">图片测试</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/31/图片测试/" class="archive-article-date">
-  	<time datetime="2019-08-31T14:10:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图片测试"><a href="#图片测试" class="headerlink" title="图片测试"></a>图片测试</h2><p><img src="/2019/08/31/图片测试/1.jpg" alt="测试1"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/31/图片测试/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇个人博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/31/我的第一篇个人博客文章/">我的第一篇个人博客文章</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/31/我的第一篇个人博客文章/" class="archive-article-date">
-  	<time datetime="2019-08-31T11:31:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这是我第一次搭建自己的博客，以后这里就是自己的发声所了，加油！</p>
-<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>搭建博客后很多操作不熟悉，但还好不算太难</p>
-<h2 id="AND-我的博客园"><a href="#AND-我的博客园" class="headerlink" title="AND 我的博客园"></a>AND 我的博客园</h2><p><a href="https://www.cnblogs.com/huangzzz/" target="_blank" rel="noopener">https://www.cnblogs.com/huangzzz/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/31/我的第一篇个人博客文章/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/31/hello-world/" class="archive-article-date">
-  	<time datetime="2019-08-31T08:07:38.843Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/31/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -851,8 +359,8 @@ p{ text-indent:2em;}
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
