@@ -159,6 +159,224 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-const详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/const详解/">const详解</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/10/const详解/" class="archive-article-date">
+  	<time datetime="2019-09-10T11:57:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="const详解"><a href="#const详解" class="headerlink" title="const详解"></a>const详解</h1><h2 id="const成员函数："><a href="#const成员函数：" class="headerlink" title="const成员函数："></a>const成员函数：</h2><ul>
+<li><p>在类的内部定义：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">类型  函数名（参数列表）const</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在类定义之外时：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">类内声明</span><br><span class="line">类型 函数名 （参数列表）const；</span><br><span class="line">类外定义</span><br><span class="line">类型 类名：：函数名（参数列表）const</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>具体用法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">#include &quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">class point</span><br><span class="line">&#123;</span><br><span class="line">	int x;//类中默认为私有成员</span><br><span class="line">	int y;</span><br><span class="line">public:</span><br><span class="line">		point(int xp = 0, int yp = 0)</span><br><span class="line">	&#123;</span><br><span class="line">		x = xp;</span><br><span class="line">		y = yp;</span><br><span class="line">	&#125;</span><br><span class="line">		//void print1()</span><br><span class="line">		//&#123;</span><br><span class="line">		//	cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; endl;</span><br><span class="line">		//&#125;</span><br><span class="line">		//const成员函数内无法修改数据成员，否则报错,也无法调用非const的成员函数</span><br><span class="line">		void print() const</span><br><span class="line">		&#123;</span><br><span class="line">			print1();</span><br><span class="line">			//x = 5;//试图修改x，将引发编译器报错</span><br><span class="line">			cout &lt;&lt; x &lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	point po;</span><br><span class="line">	po.print();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li>如果有个成员函数想修改对象中的某一个成员怎么办？这时我们可以使用 mutable 关键字修饰这个成员，mutable 的意思也是易变的，容易改变的意思，被 mutable 关键字修饰的成员可以处于不断变化中，如下面的例子。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    Test(int _m,int _t):_cm(_m),_ct(_t)&#123;&#125;</span><br><span class="line">    void Kf()const</span><br><span class="line">    &#123;</span><br><span class="line">        ++_cm; // 错误</span><br><span class="line">        ++_ct; // 正确</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int _cm;</span><br><span class="line">    mutable int _ct;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    Test t(8,7);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="const-修饰指针变量。"><a href="#const-修饰指针变量。" class="headerlink" title="const 修饰指针变量。"></a>const 修饰指针变量。</h2><p>*const 修饰指针变量有以下三种情况。</p>
+<ol>
+<li>const 修饰指针指向的内容，则内容为不可变量。</li>
+<li>const 修饰指针，则指针为不可变量。</li>
+<li>const 修饰指针和指针指向的内容，则指针和指针指向的内容都为不可变量。</li>
+</ol>
+<ul>
+<li><p>对于 1:</p>
+<p>  const int *p = 8;</p>
+</li>
+</ul>
+<p>则指针指向的内容 8 不可改变。简称左定值，因为 const 位于 * 号的左边。</p>
+<ul>
+<li>对于2：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> int a = 8;</span><br><span class="line">int* const p = &amp;a;</span><br><span class="line">*p = 9; // 正确</span><br><span class="line">int  b = 7;</span><br><span class="line">p = &amp;b; // 错误</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>对于 const 指针 p 其指向的内存地址不能够被改变，但其内容可以改变。简称，右定向。因为 const 位于 * 号的右边。</p>
+<h2 id="const参数传递和函数返回值。"><a href="#const参数传递和函数返回值。" class="headerlink" title="const参数传递和函数返回值。"></a>const参数传递和函数返回值。</h2><p>对于 const 修饰函数参数可以分为三种情况。</p>
+<ul>
+<li>A：值传递的 const 修饰传递，一般这种情况不需要 const 修饰，因为函数会自动产生临时变量复制实参值。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">void Cpf(const int a)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;a;</span><br><span class="line">    // ++a;  是错误的，a 不能被改变</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line"> </span><br><span class="line">&#123;</span><br><span class="line">    Cpf(8);</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">输出8</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>B：当 const 参数为指针时，可以防止指针被意外篡改。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">void Cpf(int *const a)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;*a&lt;&lt;&quot; &quot;;</span><br><span class="line">    *a = 9;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int a = 8;</span><br><span class="line">    Cpf(&amp;a);</span><br><span class="line">    cout&lt;&lt;a; // a 为 9</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">输出 8 9</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>C：自定义类型的参数传递，需要临时对象复制参数，对于临时对象的构造，需要调用构造函数，比较浪费时间，因此我们采取 const 外加引用传递的方法。</li>
+</ul>
+<p>并且对于一般的 int、double 等内置类型，我们不采用引用的传递方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    Test()&#123;&#125;</span><br><span class="line">    Test(int _m):_cm(_m)&#123;&#125;</span><br><span class="line">    int get_cm()const</span><br><span class="line">    &#123;</span><br><span class="line">       return _cm;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">private:</span><br><span class="line">    int _cm;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">void Cmf(const Test&amp; _tt)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;_tt.get_cm();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    Test t(8);</span><br><span class="line">    Cmf(t);</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">结果输出 8。</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">const</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/10/const详解/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-多线程学习6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/05/多线程学习6/">多线程学习6</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/05/多线程学习6/" class="archive-article-date">
+  	<time datetime="2019-09-05T08:56:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h2 id="std-condition-variable"><a href="#std-condition-variable" class="headerlink" title="std::condition_variable"></a>std::condition_variable</h2><ul>
+<li><p>std::condition_variable</p>
+</li>
+<li><p>是一个和条件相关的类，简单来说，就是等待一个条件达成</p>
+</li>
+<li><p>这个类是需要和互斥量配合使用，需要先生成这个类的对象</p>
+</li>
+<li><p>wait（）和notify_one()</p>
+</li>
+<li><p>//wait()是一个成员函数：</p>
+<pre><code>如果第二个参数的（这里是lanbda表达式）返回值是false，那么wait将解锁互斥量，并堵塞到本行。返回true的话就直接返回wait（）往程序下面走，此时锁是锁上的。
+
+堵塞到其它线程调用notify_one()成员函数为止
+
+如果wait没有第二参数，那就相当于第二个参数是false
+
+当其他线程用notify_one()将wait唤醒之后，wait（）不断的尝试重新获取互斥量的锁,如果获取到了这个锁，并上锁，重复上诉操作，不同的是，在没有第二参数的时候第一次调用是默认第二参数为false，后面调用的时候则返回的是true</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">#include&quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;list&gt;</span><br><span class="line">#include&lt;mutex&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class test &#123;</span><br><span class="line">public:</span><br><span class="line">	//线程入口,搜集命令</span><br><span class="line">	void Intest()</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			</span><br><span class="line">			std::unique_lock&lt;std::mutex&gt;sbguard(my_mutex);</span><br><span class="line">			cout &lt;&lt; &quot;插入一个元素&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">			//my_mutex.lock();</span><br><span class="line">			orderpools.push_back(i);</span><br><span class="line">			//my_mutex.unlock();</span><br><span class="line">			m_cost.notify_one();//尝试把wait线程唤醒，</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	//把数据取出的线程</span><br><span class="line">	void Outtest()</span><br><span class="line">	&#123;</span><br><span class="line">		while (true)</span><br><span class="line">		&#123;</span><br><span class="line">			std::unique_lock&lt;std::mutex&gt;sbguard(my_mutex);//sbguard为随便取的对象名</span><br><span class="line">			</span><br><span class="line">			//wait()是一个成员函数：</span><br><span class="line">			//如果第二个参数的（这里是lanbda表达式）返回值是false，那么wait将解锁互斥量，并堵塞到本行。返回true的话就直接返回wait（）往程序下面走，此时锁是锁上的。</span><br><span class="line">			//堵塞到其它线程调用notify_one()成员函数为止</span><br><span class="line">		    //如果wait没有第二参数，那就相当于第二个参数是false</span><br><span class="line">			//当其他线程用notify_one()将wait唤醒之后，wait（）不断的尝试重新获取互斥量的锁,如果获取到了这个锁，并上锁，重复上诉操作，不同的是，在没有第二参数的时候第一次调用是默认第二参数为false，后面调用的时候则返回的是true</span><br><span class="line">			m_cost.wait(sbguard, [this] &#123; //一个lambda表达式就是一个可调用对象（函数）</span><br><span class="line">				if (!orderpools.empty())</span><br><span class="line">					return true;</span><br><span class="line">				return false;</span><br><span class="line">			&#125;);</span><br><span class="line">			int command = orderpools.front();</span><br><span class="line">			orderpools.pop_front();</span><br><span class="line">			cout &lt;&lt; &quot;取出命令&quot; &lt;&lt; command &lt;&lt; endl;</span><br><span class="line">			//后续操作可以随时解锁，详情在第四章</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		//for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		//&#123;</span><br><span class="line">		//	if (!orderpools.empty()) &#123;</span><br><span class="line">		//		std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex);//sbguard为随便取的对象名</span><br><span class="line"></span><br><span class="line">		//		//my_mutex.lock();</span><br><span class="line">		//		if (!orderpools.empty())</span><br><span class="line">		//		&#123;</span><br><span class="line">		//			int command = orderpools.front();</span><br><span class="line">		//			orderpools.pop_front();</span><br><span class="line">		//			cout &lt;&lt; &quot;取出命令&quot; &lt;&lt; command &lt;&lt; endl;</span><br><span class="line">		//		&#125;</span><br><span class="line">		//		else</span><br><span class="line">		//		&#123;</span><br><span class="line"></span><br><span class="line">		//			cout &lt;&lt; &quot;命令池为空&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">		//		&#125;</span><br><span class="line">		//	&#125;</span><br><span class="line">		//	//my_mutex.unlock();</span><br><span class="line">		//&#125;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	list&lt;int&gt;orderpools;//用于存储命令集合</span><br><span class="line">	mutex my_mutex;//创建了一个互斥量</span><br><span class="line">	condition_variable m_cost;//生成一个条件对象</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	test mytobj;</span><br><span class="line">	thread myoutmytobj(&amp;test::Outtest, &amp;mytobj);//第二个参数是引用, 才能保证线程里用的是同一对象</span><br><span class="line">	thread Inmytobj(&amp;test::Intest, &amp;mytobj);</span><br><span class="line">	myoutmytobj.join();</span><br><span class="line">	Inmytobj.join();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">运行结果：</span><br><span class="line"></span><br><span class="line">取出命令460</span><br><span class="line">取出命令461</span><br><span class="line">取出命令462</span><br><span class="line">取出命令463</span><br><span class="line">取出命令464</span><br><span class="line">取出命令465</span><br><span class="line">插入一个元素526</span><br><span class="line">插入一个元素527</span><br><span class="line">插入一个元素528</span><br><span class="line">取出命令466</span><br><span class="line">取出命令467</span><br><span class="line">取出命令468</span><br><span class="line">取出命令469</span><br><span class="line">取出命令470</span><br><span class="line">插入一个元素529</span><br><span class="line">插入一个元素530</span><br><span class="line">插入一个元素531</span><br><span class="line">取出命令471</span><br><span class="line">取出命令472</span><br><span class="line">插入一个元素532</span><br><span class="line">插入一个元素533</span><br><span class="line">插入一个元素534</span><br><span class="line">插入一个元素535</span><br><span class="line">插入一个元素536</span><br><span class="line">插入一个元素537</span><br><span class="line">插入一个元素538</span><br><span class="line"></span><br><span class="line">*/</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">多线程，并发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/05/多线程学习6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -754,81 +972,10 @@ p{ text-indent:2em;}
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/31/hello-world/" class="archive-article-date">
-  	<time datetime="2019-08-31T08:07:38.843Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/31/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -922,11 +1069,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">static</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">多线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">多线程，并发</a>
               </li>
              
               <li class="article-tag-list-item">

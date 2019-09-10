@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我的第一篇个人博客文章 | 请进小黑屋</title>
+  <title>多线程学习6 | 请进小黑屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介这是我第一次搭建自己的博客，以后这里就是自己的发声所了，加油！ 第一章搭建博客后很多操作不熟悉，但还好不算太难 AND 我的博客园https://www.cnblogs.com/huangzzz/">
+  <meta name="description" content="第六章std::condition_variable std::condition_variable  是一个和条件相关的类，简单来说，就是等待一个条件达成  这个类是需要和互斥量配合使用，需要先生成这个类的对象  wait（）和notify_one()  //wait()是一个成员函数： 如果第二个参数的（这里是lanbda表达式）返回值是false，那么wait将解锁互斥量，并堵塞到本行。返回">
+<meta name="keywords" content="多线程，并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇个人博客文章">
-<meta property="og:url" content="http://yoursite.com/2019/08/31/我的第一篇个人博客文章/index.html">
+<meta property="og:title" content="多线程学习6">
+<meta property="og:url" content="http://yoursite.com/2019/09/05/多线程学习6/index.html">
 <meta property="og:site_name" content="请进小黑屋">
-<meta property="og:description" content="简介这是我第一次搭建自己的博客，以后这里就是自己的发声所了，加油！ 第一章搭建博客后很多操作不熟悉，但还好不算太难 AND 我的博客园https://www.cnblogs.com/huangzzz/">
+<meta property="og:description" content="第六章std::condition_variable std::condition_variable  是一个和条件相关的类，简单来说，就是等待一个条件达成  这个类是需要和互斥量配合使用，需要先生成这个类的对象  wait（）和notify_one()  //wait()是一个成员函数： 如果第二个参数的（这里是lanbda表达式）返回值是false，那么wait将解锁互斥量，并堵塞到本行。返回">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-31T11:41:23.317Z">
+<meta property="og:updated_time" content="2019-09-06T09:23:08.118Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的第一篇个人博客文章">
-<meta name="twitter:description" content="简介这是我第一次搭建自己的博客，以后这里就是自己的发声所了，加油！ 第一章搭建博客后很多操作不熟悉，但还好不算太难 AND 我的博客园https://www.cnblogs.com/huangzzz/">
+<meta name="twitter:title" content="多线程学习6">
+<meta name="twitter:description" content="第六章std::condition_variable std::condition_variable  是一个和条件相关的类，简单来说，就是等待一个条件达成  这个类是需要和互斥量配合使用，需要先生成这个类的对象  wait（）和notify_one()  //wait()是一个成员函数： 如果第二个参数的（这里是lanbda表达式）返回值是false，那么wait将解锁互斥量，并堵塞到本行。返回">
   
     <link rel="alternative" href="/atom.xml" title="请进小黑屋" type="application/atom+xml">
   
@@ -158,29 +159,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇个人博客文章" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-多线程学习6" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇个人博客文章
+      多线程学习6
     </h1>
   
 
         
-        <a href="/2019/08/31/我的第一篇个人博客文章/" class="archive-article-date">
-  	<time datetime="2019-08-31T11:31:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
+        <a href="/2019/09/05/多线程学习6/" class="archive-article-date">
+  	<time datetime="2019-09-05T08:56:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>这是我第一次搭建自己的博客，以后这里就是自己的发声所了，加油！</p>
-<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>搭建博客后很多操作不熟悉，但还好不算太难</p>
-<h2 id="AND-我的博客园"><a href="#AND-我的博客园" class="headerlink" title="AND 我的博客园"></a>AND 我的博客园</h2><p><a href="https://www.cnblogs.com/huangzzz/" target="_blank" rel="noopener">https://www.cnblogs.com/huangzzz/</a></p>
+        <h1 id="第六章"><a href="#第六章" class="headerlink" title="第六章"></a>第六章</h1><h2 id="std-condition-variable"><a href="#std-condition-variable" class="headerlink" title="std::condition_variable"></a>std::condition_variable</h2><ul>
+<li><p>std::condition_variable</p>
+</li>
+<li><p>是一个和条件相关的类，简单来说，就是等待一个条件达成</p>
+</li>
+<li><p>这个类是需要和互斥量配合使用，需要先生成这个类的对象</p>
+</li>
+<li><p>wait（）和notify_one()</p>
+</li>
+<li><p>//wait()是一个成员函数：</p>
+<pre><code>如果第二个参数的（这里是lanbda表达式）返回值是false，那么wait将解锁互斥量，并堵塞到本行。返回true的话就直接返回wait（）往程序下面走，此时锁是锁上的。
+
+堵塞到其它线程调用notify_one()成员函数为止
+
+如果wait没有第二参数，那就相当于第二个参数是false
+
+当其他线程用notify_one()将wait唤醒之后，wait（）不断的尝试重新获取互斥量的锁,如果获取到了这个锁，并上锁，重复上诉操作，不同的是，在没有第二参数的时候第一次调用是默认第二参数为false，后面调用的时候则返回的是true</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">#include&quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &lt;Windows.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">#include&lt;list&gt;</span><br><span class="line">#include&lt;mutex&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class test &#123;</span><br><span class="line">public:</span><br><span class="line">	//线程入口,搜集命令</span><br><span class="line">	void Intest()</span><br><span class="line">	&#123;</span><br><span class="line"></span><br><span class="line">		for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			</span><br><span class="line">			std::unique_lock&lt;std::mutex&gt;sbguard(my_mutex);</span><br><span class="line">			cout &lt;&lt; &quot;插入一个元素&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">			//my_mutex.lock();</span><br><span class="line">			orderpools.push_back(i);</span><br><span class="line">			//my_mutex.unlock();</span><br><span class="line">			m_cost.notify_one();//尝试把wait线程唤醒，</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	//把数据取出的线程</span><br><span class="line">	void Outtest()</span><br><span class="line">	&#123;</span><br><span class="line">		while (true)</span><br><span class="line">		&#123;</span><br><span class="line">			std::unique_lock&lt;std::mutex&gt;sbguard(my_mutex);//sbguard为随便取的对象名</span><br><span class="line">			</span><br><span class="line">			//wait()是一个成员函数：</span><br><span class="line">			//如果第二个参数的（这里是lanbda表达式）返回值是false，那么wait将解锁互斥量，并堵塞到本行。返回true的话就直接返回wait（）往程序下面走，此时锁是锁上的。</span><br><span class="line">			//堵塞到其它线程调用notify_one()成员函数为止</span><br><span class="line">		    //如果wait没有第二参数，那就相当于第二个参数是false</span><br><span class="line">			//当其他线程用notify_one()将wait唤醒之后，wait（）不断的尝试重新获取互斥量的锁,如果获取到了这个锁，并上锁，重复上诉操作，不同的是，在没有第二参数的时候第一次调用是默认第二参数为false，后面调用的时候则返回的是true</span><br><span class="line">			m_cost.wait(sbguard, [this] &#123; //一个lambda表达式就是一个可调用对象（函数）</span><br><span class="line">				if (!orderpools.empty())</span><br><span class="line">					return true;</span><br><span class="line">				return false;</span><br><span class="line">			&#125;);</span><br><span class="line">			int command = orderpools.front();</span><br><span class="line">			orderpools.pop_front();</span><br><span class="line">			cout &lt;&lt; &quot;取出命令&quot; &lt;&lt; command &lt;&lt; endl;</span><br><span class="line">			//后续操作可以随时解锁，详情在第四章</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		//for (int i = 0; i &lt; 10000; ++i)</span><br><span class="line">		//&#123;</span><br><span class="line">		//	if (!orderpools.empty()) &#123;</span><br><span class="line">		//		std::lock_guard&lt;std::mutex&gt;sbguard(my_mutex);//sbguard为随便取的对象名</span><br><span class="line"></span><br><span class="line">		//		//my_mutex.lock();</span><br><span class="line">		//		if (!orderpools.empty())</span><br><span class="line">		//		&#123;</span><br><span class="line">		//			int command = orderpools.front();</span><br><span class="line">		//			orderpools.pop_front();</span><br><span class="line">		//			cout &lt;&lt; &quot;取出命令&quot; &lt;&lt; command &lt;&lt; endl;</span><br><span class="line">		//		&#125;</span><br><span class="line">		//		else</span><br><span class="line">		//		&#123;</span><br><span class="line"></span><br><span class="line">		//			cout &lt;&lt; &quot;命令池为空&quot; &lt;&lt; i &lt;&lt; endl;</span><br><span class="line">		//		&#125;</span><br><span class="line">		//	&#125;</span><br><span class="line">		//	//my_mutex.unlock();</span><br><span class="line">		//&#125;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	list&lt;int&gt;orderpools;//用于存储命令集合</span><br><span class="line">	mutex my_mutex;//创建了一个互斥量</span><br><span class="line">	condition_variable m_cost;//生成一个条件对象</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	test mytobj;</span><br><span class="line">	thread myoutmytobj(&amp;test::Outtest, &amp;mytobj);//第二个参数是引用, 才能保证线程里用的是同一对象</span><br><span class="line">	thread Inmytobj(&amp;test::Intest, &amp;mytobj);</span><br><span class="line">	myoutmytobj.join();</span><br><span class="line">	Inmytobj.join();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">运行结果：</span><br><span class="line"></span><br><span class="line">取出命令460</span><br><span class="line">取出命令461</span><br><span class="line">取出命令462</span><br><span class="line">取出命令463</span><br><span class="line">取出命令464</span><br><span class="line">取出命令465</span><br><span class="line">插入一个元素526</span><br><span class="line">插入一个元素527</span><br><span class="line">插入一个元素528</span><br><span class="line">取出命令466</span><br><span class="line">取出命令467</span><br><span class="line">取出命令468</span><br><span class="line">取出命令469</span><br><span class="line">取出命令470</span><br><span class="line">插入一个元素529</span><br><span class="line">插入一个元素530</span><br><span class="line">插入一个元素531</span><br><span class="line">取出命令471</span><br><span class="line">取出命令472</span><br><span class="line">插入一个元素532</span><br><span class="line">插入一个元素533</span><br><span class="line">插入一个元素534</span><br><span class="line">插入一个元素535</span><br><span class="line">插入一个元素536</span><br><span class="line">插入一个元素537</span><br><span class="line">插入一个元素538</span><br><span class="line"></span><br><span class="line">*/</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
 
@@ -210,6 +226,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">多线程，并发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -260,7 +287,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/31/我的第一篇个人博客文章/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/05/多线程学习6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -274,18 +301,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/08/31/图片测试/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/10/const详解/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          图片测试
+          const详解
         
       </div>
     </a>
   
   
-    <a href="/2019/08/31/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2019/09/04/设计模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式</div>
       <i class="icon-circle-right"></i>
     </a>
   
