@@ -179,61 +179,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="const详解"><a href="#const详解" class="headerlink" title="const详解"></a>const详解</h1><h2 id="const成员函数："><a href="#const成员函数：" class="headerlink" title="const成员函数："></a>const成员函数：</h2><ul>
-<li><p>在类的内部定义：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">类型  函数名（参数列表）const</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在类定义之外时：</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">类内声明</span><br><span class="line">类型 函数名 （参数列表）const；</span><br><span class="line">类外定义</span><br><span class="line">类型 类名：：函数名（参数列表）const</span><br><span class="line">&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>具体用法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">#include &quot;pch.h&quot;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">class point</span><br><span class="line">&#123;</span><br><span class="line">	int x;//类中默认为私有成员</span><br><span class="line">	int y;</span><br><span class="line">public:</span><br><span class="line">		point(int xp = 0, int yp = 0)</span><br><span class="line">	&#123;</span><br><span class="line">		x = xp;</span><br><span class="line">		y = yp;</span><br><span class="line">	&#125;</span><br><span class="line">		//void print1()</span><br><span class="line">		//&#123;</span><br><span class="line">		//	cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; endl;</span><br><span class="line">		//&#125;</span><br><span class="line">		//const成员函数内无法修改数据成员，否则报错,也无法调用非const的成员函数</span><br><span class="line">		void print() const</span><br><span class="line">		&#123;</span><br><span class="line">			print1();</span><br><span class="line">			//x = 5;//试图修改x，将引发编译器报错</span><br><span class="line">			cout &lt;&lt; x &lt;&lt;&quot; &quot;&lt;&lt;y&lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	point po;</span><br><span class="line">	po.print();</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li>如果有个成员函数想修改对象中的某一个成员怎么办？这时我们可以使用 mutable 关键字修饰这个成员，mutable 的意思也是易变的，容易改变的意思，被 mutable 关键字修饰的成员可以处于不断变化中，如下面的例子。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    Test(int _m,int _t):_cm(_m),_ct(_t)&#123;&#125;</span><br><span class="line">    void Kf()const</span><br><span class="line">    &#123;</span><br><span class="line">        ++_cm; // 错误</span><br><span class="line">        ++_ct; // 正确</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int _cm;</span><br><span class="line">    mutable int _ct;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    Test t(8,7);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="const-修饰指针变量。"><a href="#const-修饰指针变量。" class="headerlink" title="const 修饰指针变量。"></a>const 修饰指针变量。</h2><p>*const 修饰指针变量有以下三种情况。</p>
-<ol>
-<li>const 修饰指针指向的内容，则内容为不可变量。</li>
-<li>const 修饰指针，则指针为不可变量。</li>
-<li>const 修饰指针和指针指向的内容，则指针和指针指向的内容都为不可变量。</li>
-</ol>
-<ul>
-<li><p>对于 1:</p>
-<p>  const int *p = 8;</p>
-</li>
-</ul>
-<p>则指针指向的内容 8 不可改变。简称左定值，因为 const 位于 * 号的左边。</p>
-<ul>
-<li>对于2：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> int a = 8;</span><br><span class="line">int* const p = &amp;a;</span><br><span class="line">*p = 9; // 正确</span><br><span class="line">int  b = 7;</span><br><span class="line">p = &amp;b; // 错误</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>对于 const 指针 p 其指向的内存地址不能够被改变，但其内容可以改变。简称，右定向。因为 const 位于 * 号的右边。</p>
-<h2 id="const参数传递和函数返回值。"><a href="#const参数传递和函数返回值。" class="headerlink" title="const参数传递和函数返回值。"></a>const参数传递和函数返回值。</h2><p>对于 const 修饰函数参数可以分为三种情况。</p>
-<ul>
-<li>A：值传递的 const 修饰传递，一般这种情况不需要 const 修饰，因为函数会自动产生临时变量复制实参值。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">void Cpf(const int a)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;a;</span><br><span class="line">    // ++a;  是错误的，a 不能被改变</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line"> </span><br><span class="line">&#123;</span><br><span class="line">    Cpf(8);</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">输出8</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>B：当 const 参数为指针时，可以防止指针被意外篡改。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">void Cpf(int *const a)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;*a&lt;&lt;&quot; &quot;;</span><br><span class="line">    *a = 9;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    int a = 8;</span><br><span class="line">    Cpf(&amp;a);</span><br><span class="line">    cout&lt;&lt;a; // a 为 9</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">输出 8 9</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>C：自定义类型的参数传递，需要临时对象复制参数，对于临时对象的构造，需要调用构造函数，比较浪费时间，因此我们采取 const 外加引用传递的方法。</li>
-</ul>
-<p>并且对于一般的 int、double 等内置类型，我们不采用引用的传递方式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"> </span><br><span class="line">using namespace std;</span><br><span class="line"> </span><br><span class="line">class Test</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    Test()&#123;&#125;</span><br><span class="line">    Test(int _m):_cm(_m)&#123;&#125;</span><br><span class="line">    int get_cm()const</span><br><span class="line">    &#123;</span><br><span class="line">       return _cm;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">private:</span><br><span class="line">    int _cm;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">void Cmf(const Test&amp; _tt)</span><br><span class="line">&#123;</span><br><span class="line">    cout&lt;&lt;_tt.get_cm();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    Test t(8);</span><br><span class="line">    Cmf(t);</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">结果输出 8。</span><br></pre></td></tr></table></figure>
-
-
+        <h1 id="const详解"><a href="#const详解" class="headerlink" title="const详解"></a>const详解</h1>
+        
+          <a class="article-more-a" href="/2019/09/10/const详解/#more">more >></a>
+        
       
 
       
@@ -1069,11 +1018,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
+                <a href="javascript:void(0)" class="js-tag color2">static</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">static</a>
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
